@@ -14,13 +14,13 @@
         </ul>
         <ul class="navbar-nav main-menu">
             <li class="nav-item active">
-                <a href="index.php" class="nav-link">صفحه نخست </a>
+                <a href="#" class="nav-link">صفحه نخست </a>
             </li>
             <li class="nav-item active">
-                <a href="blog.php" class="nav-link">آموزش ها </a>
+                <a href="{{ route('frontend.articles.list') }}" class="nav-link">آموزش ها </a>
             </li>
             <li class="nav-item active">
-                <a href="" class="nav-link">نمونه کارها </a>
+                <a href="#" class="nav-link">نمونه کارها </a>
             </li>
             <li class="nav-item active">
                 <a href="website-design-in-shiraz.php" class="nav-link">طراحی سایت در شیراز </a>
