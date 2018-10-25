@@ -1,0 +1,30 @@
+body
+{
+    text-align: right;
+    padding: 0;
+    margin: 0;
+    direction: rtl;
+    font-family: Vazir;
+}
+
+a
+{
+    color: white;
+    text-decoration: none;
+}
+
+a:hover
+{
+    text-decoration: none !important;
+    color: crimson;
+}
+
+.menu-sidebar
+{
+    height: calc( 100vh - 55px);
+}
+
+.custom-file-label
+{
+    text-align: center !important; 
+}
