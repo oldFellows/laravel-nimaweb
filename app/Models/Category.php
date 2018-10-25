@@ -19,4 +19,9 @@ class Category extends Model
     {
         return $this->morphedByMany(Article::class , 'categorizable' ,'categorizables', 'category_id' ,'categorizable_id');
     }
+
+    public function changesc()
+    {
+        print "hhh";
+    }
 }
