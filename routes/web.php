@@ -20,14 +20,25 @@ Route::get('/', function () {
 
 
 
+//when authentication failed, user redirect to login route automatically
+//hadi i cant speak persian , please speak english namoosan
+Route::get('/login' , 'admin\UserController@login')->name('login');
+Route::get('/authenticate' , 'admin\UserController@authenticate')->name('authenticate');
+
+
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin'] , function (){
 
-    Route::get('/articles' , 'ArticleController@index')->name('admin.articles.list');
-    Route::get('/addArticle' , 'ArticleController@addArticle')->name('article.addArticle');
-    Route::post('/addArticle','ArticleController@storeArticle')->name('article.storeArticle');
-    Route::get('/editArticle/{id}','ArticleController@edit')->name('admin.article.edit');
-    Route::post('/editArticle/{id}','ArticleController@update')->name('admin.article.update');
-    Route::get('/deleteArticle/{id}','ArticleController@delete')->name('admin.article.delete');
+
+    //set Auth middleware for Prevent access to Admin pages without login
+    Route::group(['middleware' => ['auth']],function (){
+        Route::get('/articles' , 'ArticleController@index')->name('admin.articles.list');
+        Route::get('/addArticle' , 'ArticleController@addArticle')->name('article.addArticle');
+        Route::post('/addArticle','ArticleController@storeArticle')->name('article.storeArticle');
+        Route::get('/editArticle/{id}','ArticleController@edit')->name('admin.article.edit');
+        Route::post('/editArticle/{id}','ArticleController@update')->name('admin.article.update');
+        Route::get('/deleteArticle/{id}','ArticleController@delete')->name('admin.article.delete');
+    });
+
 
     //categories routes
     Route::get('/categories', 'CategoryController@index')->name('admin.categories.list');

@@ -18,11 +18,6 @@ class ArticleController extends Controller
         return view('admin.article.index' , compact('articles'));
     }
 
-	public function change_for_github(){
-        $articles = Article::all()->sortKeysDesc();
-        return view('admin.article.index' , compact('articles'));
-    }
-
 
     public function addArticle()
     {
