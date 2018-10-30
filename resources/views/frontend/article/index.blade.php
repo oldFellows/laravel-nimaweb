@@ -11,7 +11,7 @@
                                 <img src={{ $article->image_path }}>
                             </div>
                             <div class="blog-post-three-section-description">
-                                <p>{{ $article->body }}</p>
+                                <p>{{ $article->title }}</p>
                             </div>
                             <div class="blog-post-three-section-readmore">
                                 <a href="{{ route('frontend.articles.single' , $article->id) }}">ادامه مطلب</a>

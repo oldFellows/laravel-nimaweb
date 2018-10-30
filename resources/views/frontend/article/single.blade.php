@@ -25,4 +25,13 @@
             </div>
         </div>
     </div>
+
+
+    @include('frontend.comment.form',$article_item)
+
+
+    @include('frontend.comment.list',$article_item)
+
+
+
 @endsection

@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 
 use App\Article;
+use App\Comment;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Tag;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
@@ -14,10 +16,13 @@ class ArticleController extends Controller
 {
 
     public function index(){
-        $articles = Article::all()->sortKeysDesc();
-        return view('admin.article.index' , compact('articles'));
-    }
 
+
+
+        $articles = Article::all()->sortKeysDesc();
+
+        return view('admin.article.index' , compact('articles','comments'));
+    }
 
 
     public function addArticle()

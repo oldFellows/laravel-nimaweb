@@ -21,6 +21,11 @@ class Article extends Model
     }
 
 
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'commentable');
+    }
+
     public function updateViewCounts() {
 
         $isViewExistForToday = ArticleView::where('article_id',$this->id)->whereDate('view_date',Carbon::today())->first();
@@ -37,4 +42,4 @@ class Article extends Model
 
     }
 
-}
+
