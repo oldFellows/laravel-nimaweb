@@ -30,9 +30,12 @@ Route::post('/article/{id}/comment' , 'Admin\CommentController@store')->name('fr
 
 
 
+
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin' , 'middleware' => 'auth' ] , function (){
 
 
+  Route::get('/' , 'DashboardController@index')->name('admin.dashboard');
+  
     //set Auth middleware for Prevent access to Admin pages without login
         Route::get('/articles' , 'ArticleController@index')->name('admin.articles.list');
         Route::get('/addArticle' , 'ArticleController@addArticle')->name('article.addArticle');
@@ -50,6 +53,16 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin' , 'middleware' => 'aut
     Route::get('/comments/edit/{id}','CommentController@edit')->name('admin.comments.edit');
     Route::post('/comments/update/{id}','CommentController@update')->name('admin.comments.update');
     Route::get('/comments/remove/{id}','CommentController@remove')->name('admin.comments.remove');
+
+    
+
+    Route::get('/articles' , 'ArticleController@index')->name('admin.articles.list');
+    Route::get('/addArticle' , 'ArticleController@addArticle')->name('article.addArticle');
+    Route::post('/addArticle','ArticleController@storeArticle')->name('article.storeArticle');
+    Route::get('/editArticle/{id}','ArticleController@edit')->name('admin.article.edit');
+    Route::post('/editArticle/{id}','ArticleController@update')->name('admin.article.update');
+    Route::get('/deleteArticle/{id}','ArticleController@delete')->name('admin.article.delete');
+
 
     //categories routes
     Route::get('/categories', 'CategoryController@index')->name('admin.categories.list');

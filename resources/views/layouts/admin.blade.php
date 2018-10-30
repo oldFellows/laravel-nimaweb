@@ -23,7 +23,11 @@
                 <h5>کاربر ادمین به پنل مدیریت خوش آمدید</h5>
             </div>
             <div class="col-12 col-md-3 bg-light py-2 text-center">
-                <h5>تاریخ امروز : 10 / 06 / 1397</h5>
+                <?php
+                $date = \Morilog\Jalali\CalendarUtils::strftime('d / m / Y', strtotime(\Carbon\Carbon::now()->toDateString())); // 1395-02-19
+                $date =  \Morilog\Jalali\CalendarUtils::convertNumbers($date);
+                ?>
+                <h5>تاریخ امروز :{{ $date }}</h5>
             </div>
             <div class="col-12 col-md-2 col-12 col-md-4 bg-light py-2">
                 <div class="row">
@@ -50,7 +54,7 @@
         <div class="row bg-light">
             <div class="col-12 col-md-2 bg-dark text-white px-0 shadow-sm menu-sidebar">
                 <div class="element-in-menu w-100 py-3 text-center border-bottom border-info">
-                    <a href="pwebsitepage.php"><h6>صفحه نخست</h6></a>
+                    <a href="{{ route('admin.dashboard') }}"><h6>صفحه نخست</h6></a>
                 </div>
                 <div class="element-in-menu w-100 py-3 text-center border-bottom border-info">
                     <a href="{{ route('article.addArticle') }}"><h6>افزودن نوشته</h6></a>
