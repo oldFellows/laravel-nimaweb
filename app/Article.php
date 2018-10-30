@@ -26,13 +26,13 @@ class Article extends Model
         return $this->morphMany(Comment::class, 'commentable');
     }
 
-    public function updateViewCounts() {
+    public function updateViewCounts()
+    {
 
-        $isViewExistForToday = ArticleView::where('article_id',$this->id)->whereDate('view_date',Carbon::today())->first();
-        if($isViewExistForToday && $isViewExistForToday instanceof ArticleView && !session()->has('user_ip'))
-        {
+        $isViewExistForToday = ArticleView::where('article_id', $this->id)->whereDate('view_date', Carbon::today())->first();
+        if ($isViewExistForToday && $isViewExistForToday instanceof ArticleView && !session()->has('user_ip')) {
             $isViewExistForToday->increment('view_count');
-        }else{
+        } else {
             ArticleView::create([
                 'article_id' => $this->id,
                 'view_count' => 1,
@@ -41,5 +41,6 @@ class Article extends Model
         }
 
     }
+}
 
 
