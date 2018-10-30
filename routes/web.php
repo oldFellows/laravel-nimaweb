@@ -22,6 +22,9 @@ Route::get('/', function () {
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin'] , function (){
 
+
+    Route::get('/' , 'DashboardController@index')->name('admin.dashboard');
+
     Route::get('/articles' , 'ArticleController@index')->name('admin.articles.list');
     Route::get('/addArticle' , 'ArticleController@addArticle')->name('article.addArticle');
     Route::post('/addArticle','ArticleController@storeArticle')->name('article.storeArticle');
