@@ -35,6 +35,7 @@ class CategoryController extends Controller
         return view('admin.category.edit',compact('catItem'))->with('panel_title',' ویرایش دسته بندی');
     }
 
+
     public function update( Request $request,$category_id ) {
         $catItem = Category::find($category_id);
         $updateResult = $catItem->update([

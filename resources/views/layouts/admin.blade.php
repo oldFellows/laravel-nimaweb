@@ -71,16 +71,13 @@
                     <a href="{{ route('admin.tags.list') }}"><h6>مشاهده برچسب ها</h6></a>
                 </div>
                 <div class="element-in-menu w-100 py-3 text-center border-bottom border-info">
-                    <a href="#"><h6>تغییر تصاویر اسلایدر صفحه اصلی</h6></a>
+                    <a href="{{ route('admin.comments.list') }}"><h6>مدیریت نظرات</h6></a>
                 </div>
                 <div class="element-in-menu w-100 py-3 text-center border-bottom border-info">
                     <a href="#"><h6>تنطیمات</h6></a>
                 </div>
                 <div class="element-in-menu w-100 py-3 text-center border-bottom border-info">
                     <a href="#"><h6>ایمیل های ارسالی و دریافتی</h6></a>
-                </div>
-                <div class="element-in-menu w-100 py-3 text-center border-bottom border-info">
-                    <a href="#"><h6>تغییر تصاویر اسلایدر صفحه اصلی</h6></a>
                 </div>
             </div>
             <div class="col-12 col-md-8 w-100 bg-light mt-4 mr-4 shadow-sm">
@@ -97,6 +94,8 @@
             <script src="/js/jquery-2.1.4.js"></script>
             <script src="/js/select2.min.js"></script>
             <script src="/js/custom-admin.js"></script>
+            <script src="/js/nav.js"></script>
+            <script src="/js/bootstrap.min.js"></script>
 </body>
 
 </html>
