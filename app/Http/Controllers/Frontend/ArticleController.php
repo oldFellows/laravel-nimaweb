@@ -10,7 +10,6 @@ class ArticleController extends Controller
 {
     public function index(Request $request)
     {
-        session(['user_ip' => $request->getClientIp()]);
         $articles = Article::all()->sortKeysDesc();
         return view('frontend.article.index',compact('articles'));
     }
@@ -22,6 +21,8 @@ class ArticleController extends Controller
         if ( !session()->has('user_ip') ) {
             $article_item->updateViewCounts();
         }
+
+        session(['user_ip' => $request->getClientIp()]);
 
         return view('frontend.article.single' , compact('article_item'));
     }
