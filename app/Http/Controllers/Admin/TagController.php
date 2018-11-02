@@ -21,13 +21,15 @@ class TagController extends Controller
 
     public function store(Request $request)
     {
-        //validation
+        $request->validate([
+            'tag_name' => 'required',
+        ]);
 
         $new_Tag = Tag::create([
             'tag_name' => $request->input('tag_name')
         ]);
         if ($new_Tag) {
-            return redirect()->route('admin.tags.list');
+            return redirect()->route('admin.tags.list')->with('success','برچسب جدید با موفقیت ثبت شد.');;
         }
     }
 
@@ -40,12 +42,16 @@ class TagController extends Controller
 
     public function update(Request $request, $tag_id)
     {
+        $request->validate([
+            'tag_name' => 'required',
+        ]);
+
         $tagItem = Tag::find($tag_id);
         $updateResult = $tagItem->update([
             'tag_name' => $request->input('tag_name')
         ]);
         if ($updateResult) {
-            return redirect()->route('admin.tags.list');
+            return redirect()->route('admin.tags.list')->with('success','برچسب چدید با موفقیت به روز رسانی شد.');;
 
         }
     }
@@ -54,7 +60,7 @@ class TagController extends Controller
     {
         $removeResult = Tag::destroy([$tag_id]);
 
-        return redirect()->route('admin.tags.list');
+        return redirect()->route('admin.tags.list')->with('success','برچسب مورد نظر با موفقیت حذف شد.');;
 
 
     }

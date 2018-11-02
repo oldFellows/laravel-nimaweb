@@ -10,8 +10,11 @@
                             <div class="blog-post-three-section-img">
                                 <img src={{ $article->image_path }}>
                             </div>
-                            <div class="blog-post-three-section-description">
+                            <div class="">
                                 <p>{{ $article->title }}</p>
+                            </div>
+                            <div class="blog-post-three-section-description">
+                                <p>{{ $article->body }}</p>
                             </div>
                             <div class="blog-post-three-section-readmore">
                                 <a href="{{ route('frontend.articles.single' , $article->id) }}">ادامه مطلب</a>

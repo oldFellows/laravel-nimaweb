@@ -29,7 +29,7 @@ class ArticleController extends Controller
     {
         $categories = Category::all();
         $tags = Tag::all();
-        return view('admin.article.create' , compact('categories' , 'tags'));
+        return view('admin.article.create' , compact('categories' , 'tags'))->with('success','مقاله ی جدید با موفقیت ثبت شد.');;
     }
 
 
@@ -166,7 +166,7 @@ class ArticleController extends Controller
                 $result = File::delete(public_path().$article->image_path);
                 if ($result){
 
-                    return redirect()->route('admin.articles.list')->with('success','پکیج مورد نظر با موفقیت حذف گردید.');
+                    return redirect()->route('admin.articles.list')->with('success','مقاله مورد نظر با موفقیت حذف گردید.');
                 }
             }
         }
