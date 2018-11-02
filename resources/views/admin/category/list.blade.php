@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-
+    @include('admin.partials.notifications')
     <table class="table table-bordered">
         <thead>
         @include('admin.category.columns')

@@ -19,7 +19,10 @@ class CategoryController extends Controller
     }
 
     public function store( Request $request ) {
-        //validation
+
+        $request->validate([
+            'category_name' => 'required',
+        ]);
 
         $new_category= Category::create([
             'category_name' => $request->input('category_name')
@@ -32,11 +35,16 @@ class CategoryController extends Controller
     public function edit( Request $request, $category_id ) {
 
         $catItem = Category::find($category_id);
-        return view('admin.category.edit',compact('catItem'))->with('panel_title',' ویرایش دسته بندی');
+        return view('admin.category.edit',compact('catItem'));
     }
 
 
     public function update( Request $request,$category_id ) {
+
+        $request->validate([
+            'category_name' => 'required',
+        ]);
+
         $catItem = Category::find($category_id);
         $updateResult = $catItem->update([
             'category_name' => $request->input('category_name')

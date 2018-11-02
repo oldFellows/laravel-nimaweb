@@ -11,19 +11,17 @@ class ArticleController extends Controller
     public function index(Request $request)
     {
         $articles = Article::all()->sortKeysDesc();
-        return view('frontend.article.index',compact('articles'));
+        return view('frontend.article.index', compact('articles'));
     }
 
-    public function single(Request $request , $id)
+    public function single(Request $request, $id)
     {
 
         $article_item = Article::find($id);
-        if ( !session()->has('user_ip') ) {
-            $article_item->updateViewCounts();
-        }
 
-        session(['user_ip' => $request->getClientIp()]);
+        $article_item->updateViewCounts();
 
-        return view('frontend.article.single' , compact('article_item'));
+
+        return view('frontend.article.single', compact('article_item'));
     }
 }
