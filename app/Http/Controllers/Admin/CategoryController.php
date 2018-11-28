@@ -50,6 +50,7 @@ class CategoryController extends Controller
             'category_name' => $request->input('category_name')
         ]);
         if($updateResult){
+            $catItem->touch(); // this code updates updated_at
             return redirect()->route('admin.categories.list')->with('success','اطلاعات با موفقیت به روز رسانی شد');
 
         }

@@ -10,6 +10,7 @@ use App\Models\Category;
 use App\Models\Tag;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 
 class ArticleController extends Controller
@@ -18,9 +19,13 @@ class ArticleController extends Controller
     public function index(){
 
 
+//        $comment = Comment::find(1);
+//        dd(($comment->commentable_type)::find(2));
 
-        $articles = Article::all()->sortKeysDesc();
-
+//        $articles = Article::all()->orderByRaw('updated_at - created_at DESC');
+        $articles = DB::table('articles')
+            ->orderByRaw('updated_at DESC')
+            ->get();
         return view('admin.article.index' , compact('articles','comments'));
     }
 
@@ -146,6 +151,7 @@ class ArticleController extends Controller
             if($request->has('tags')) {
                 $article->tags()->sync($request->input('tags'));
             }
+            $article->touch(); // this code updates updated_at
             return redirect()->route('admin.articles.list')->with('success','اطلاعات با موفقیت به روز رسانی شد');
 
         }

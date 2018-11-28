@@ -51,6 +51,7 @@ class TagController extends Controller
             'tag_name' => $request->input('tag_name')
         ]);
         if ($updateResult) {
+            $tagItem->touch(); // this code updates updated_at
             return redirect()->route('admin.tags.list')->with('success','برچسب چدید با موفقیت به روز رسانی شد.');;
 
         }

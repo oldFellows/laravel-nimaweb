@@ -9,7 +9,7 @@ jQuery(document).ready(function ($) {
 
             reader.onload = function(e) {
                 $('#preview').attr('src', e.target.result);
-            }
+            };
 
             reader.readAsDataURL(input.files[0]);
         }

@@ -10,7 +10,7 @@ class ArticleController extends Controller
 {
     public function index(Request $request)
     {
-        $articles = Article::all()->sortKeysDesc();
+        $articles = Article::all()->sortByDesc('updated_at');
         return view('frontend.article.index', compact('articles'));
     }
 

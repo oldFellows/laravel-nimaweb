@@ -21,8 +21,11 @@ class CommentController extends Controller
 {
 
     public function index(){
-        $comments = Comment::all()->sortKeysDesc();
-        return view('admin.comment.list' , compact('comments'));
+        $new_comments = Comment::all()->where('status' , Comment::NEW);
+        $accepted_comments = Comment::all()->where('status' , Comment::ACCEPTED);
+        $rejected_comments = Comment::all()->where('status' , Comment::REJECTED);
+        $admin_comments = Comment::all()->where('status' , Comment::ADMIN_ANSWERS);
+        return view('admin.comment.list' , compact('new_comments' ,'accepted_comments','rejected_comments','admin_comments'));
     }
 
 
@@ -57,6 +60,8 @@ class CommentController extends Controller
         $commentItem->update([
             'status' => $num
         ]);
+
+        $commentItem->touch(); // this code updates updated_at
 
         return back();
 
@@ -95,6 +100,7 @@ class CommentController extends Controller
         ]);
 
         if($comment){
+            $comment->touch(); // this code updates updated_at
             return Redirect::route('admin.comments.list');
         }
 
